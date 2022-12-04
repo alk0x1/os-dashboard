@@ -1,7 +1,9 @@
 import threading
 import psutil
 import platform
+import multiprocessing
 
+multiprocessing.cpu_count()
 # os.system("ls -l")
 
 class Process:
@@ -24,13 +26,21 @@ class System:
     self.node = node,
     self.machine = machine,
 
+class Disk:
+  def __init__(self, mountpoint, fstype, opts):
+    self.mountpoint = mountpoint,
+    self.fstype = fstype,
+    self.opts = opts,
+   
+
 def all_processes():
   processes = []
 
   for pid in psutil.pids():
-    process = psutil.Process(pid)
-    new_process = Process(pid, process.name(), process.status())
-    processes.append(new_process)  
+    if (psutil.pid_exists(pid) == True):
+      process = psutil.Process(pid)
+      new_process = Process(pid, process.name(), process.status())
+      processes.append(new_process)  
 
   return processes
 
@@ -59,3 +69,14 @@ def memorys():
 
   return [virtual_memory, swap_memory]
   
+def cpu_info():
+  print("psutil.cpu_count(): ", psutil.cpu_count())
+  print("psutil.cpu_percent(): ", psutil.cpu_percent())
+  print("psutil.cpu_stats(): ", psutil.cpu_stats())
+
+def disk_info():
+  disks = []
+  for partition in psutil.disk_partitions():
+    disks.append(Disk(partition.mountpoint, partition.fstype, partition.opts))
+  
+  return disks
