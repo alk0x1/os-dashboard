@@ -1,5 +1,0 @@
-- Sistema (hardware e SO)
-- Processos/Threads
-- Sistema de Arquivos
-- Memória
-- Terminal

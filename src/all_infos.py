@@ -1,4 +1,3 @@
-import threading
 import psutil
 import platform
 import multiprocessing
