@@ -104,13 +104,13 @@ def get_process_update(n):
 
 app.layout = html.Div(
   style={
-    'background-color': colors['background'],
-    'background-size': '100%',
+    'backgroundColor': colors['background'],
+    'backgroundSize': '100%',
     'position': 'fixed',
     'display': 'flex',
     'width': '100%',
     'height': '100%',
-    'justify-content': 'space-between',
+    'justifyContent': 'space-between',
     'color': colors['text'],
   }, 
   children=[
@@ -153,8 +153,8 @@ app.layout = html.Div(
         html.Div(
           style={
             'display': 'flex',
-            'justify-content': 'center',
-            'margin-top': 100,
+            'justifyContent': 'center',
+            'marginTop': 100,
           },
           children=[
             # Processes Information
@@ -164,12 +164,12 @@ app.layout = html.Div(
                 "left": 0,
                 "bottom": 0,
                 "position": "relative",
-                "margin-right": '0.6vw',
+                "marginRight": '0.6vw',
               },
               children=[
                 dcc.Interval(
                   id='interval-process-component',
-                  interval=1*3000, # in milliseconds
+                  interval=1* 3000, # in milliseconds
                   n_intervals=0
                 ),
                 html.H3("Processes", 
@@ -181,7 +181,7 @@ app.layout = html.Div(
                   style={
                     "border": "1px solid",
                     "overflow": "scroll",
-                    "padding-top": "5px",
+                    "paddingTop": "5px",
                     "height": "200px",
                     "overflow-x": "hidden"
                   },
@@ -288,6 +288,9 @@ app.layout = html.Div(
                 ),
                 list_of_disks(disks)
               ]
+            ),
+            html.Div(
+              children=all_infos.get_top_command()
             )
           ]
         ),
@@ -298,4 +301,4 @@ app.layout = html.Div(
 
 
 if __name__ == '__main__':
-  app.run_server(debug=False)
+  app.run_server(debug=True)

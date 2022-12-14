@@ -1,6 +1,7 @@
 import psutil
 import platform
 import multiprocessing
+import os
 
 multiprocessing.cpu_count()
 # os.system("ls -l")
@@ -72,6 +73,7 @@ def cpu_info():
   print("psutil.cpu_count(): ", psutil.cpu_count())
   print("psutil.cpu_percent(): ", psutil.cpu_percent())
   print("psutil.cpu_stats(): ", psutil.cpu_stats())
+  print("psutil.disk_io_counters(): ", psutil.disk_io_counters())
 
 def disk_info():
   disks = []
@@ -79,3 +81,9 @@ def disk_info():
     disks.append(Disk(partition.mountpoint, partition.fstype, partition.opts))
   
   return disks
+
+def get_top_command():
+  top = os.system('top')
+  
+
+  # print(open('tmp', 'r').read())
