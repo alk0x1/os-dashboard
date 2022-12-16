@@ -29,6 +29,7 @@ table_div_style = {
 }
 
 app = Dash(__name__, external_stylesheets=external_css)
+server = app.server
 # get values statically
 system_info = all_infos.system_info()
 processes = all_infos.all_processes()
